@@ -17,11 +17,11 @@ sh = gc.open_by_key('1XQyZJEqIxTm3dk7JGJd5Zprkd_XfQJXOFjwTOGtx2B4')
 worksheet = sh.sheet1
 
 connection = praw.Reddit(
-            client_id=os.getenv("CLIENT_ID"),
-            client_secret=os.getenv("CLIENT_SECRET"),
+            client_id=os.getenv("REDDIT_CLIENT_ID"),
+            client_secret=os.getenv("_REDDIT_CLIENT_SECRET"),
             password=os.getenv("REDDIT_PASSWORD"),
-            user_agent=os.getenv("USER_AGENT"),
-            username=os.getenv("USERNAME")
+            user_agent=os.getenv("REDDIT_USER_AGENT"),
+            username=os.getenv("REDDIT_USERNAME")
         )
 
 interval = int(os.getenv("INTERVAL"))
@@ -59,13 +59,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-#
-# def connect_to_sub(self, subreddit):
-#     return self._connection.subreddit(subreddit)
-#
-# def connect_to_submission(self, submission_id):
-#     return self._connection.submission(id=submission_id)
-#
-# def check_correct_user(self):
-#     return print(self._connection.user.me())
