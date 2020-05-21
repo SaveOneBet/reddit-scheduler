@@ -44,7 +44,7 @@ def main():
                     logger.info("this should be posted")
                     try:
                         my_subreddit = connection.subreddit("sportsbook")
-                        regex_title = f"Pick of the Day - {now_time_cet.month}/{now_time_cet.day-1}"
+                        regex_title = f"Pick of the Day - {now_time_cet.month}/{now_time_cet.day}"
                         for submission in my_subreddit.hot(limit=30):
                             if regex_title in submission.title:
                                 post_reddit = connection.submission(id=submission.id)
