@@ -46,9 +46,9 @@ def post_list():
 
 @app.route('/post', methods=['POST'])
 def add_post():
-    message = request.form['message']
-    if not message:
-        return "error! no message"
+    # message = request.form['message']
+    # if not message:
+    #     return "error! no message"
     time = request.form['time']
     if not time:
         return "error! no time"
@@ -59,7 +59,20 @@ def add_post():
     date_time_obj, error_code = get_date_time(date_time_str=time)
     if error_code is not None:
         return error_code
+    message = (
+        f"**Record POTD: {cfg['record_POTD']}**  \n\n"
+        f"**Net units: {cfg['net_units']}**  \n\n"
+        f"**ROI: {cfg['ROI']} %**\n\n"
+        f"**Last Pick:** \n\n"
+        f"{cfg['LP_game']} | {cfg['LP_pick']} | {cfg['LP_odd']} | **{cfg['LP_outcome']}**\n\n"
+        f"**Pick OTD:** \n\n"
+        f"| {cfg['POTD_league']} | {cfg['POTD_sport']} | {cfg['POTD_hour']} | \n\n"
+        f"{cfg['POTD_game']} | **{cfg['POTD_pick']}** | **{cfg['POTD_odd']}** | (always) **1 Unit**\n\n"
+        f"**Reasons:** \n\n"
+        f"{cfg['POTD_reasons']} \n\n"
 
+        "BOL"
+    )
     post = [str(date_time_obj), message, 0]
     worksheet.append_row(post)
     return redirect('/')
