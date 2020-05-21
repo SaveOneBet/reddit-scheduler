@@ -18,7 +18,7 @@ worksheet = sh.sheet1
 
 connection = praw.Reddit(
             client_id=os.getenv("REDDIT_CLIENT_ID"),
-            client_secret=os.getenv("_REDDIT_CLIENT_SECRET"),
+            client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
             password=os.getenv("REDDIT_PASSWORD"),
             user_agent=os.getenv("REDDIT_USER_AGENT"),
             username=os.getenv("REDDIT_USERNAME")

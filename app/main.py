@@ -59,20 +59,17 @@ def add_post():
     date_time_obj, error_code = get_date_time(date_time_str=time)
     if error_code is not None:
         return error_code
-    message = (
-        f"**Record POTD: {cfg['record_POTD']}**  \n\n"
-        f"**Net units: {cfg['net_units']}**  \n\n"
-        f"**ROI: {cfg['ROI']} %**\n\n"
-        f"**Last Pick:** \n\n"
-        f"{cfg['LP_game']} | {cfg['LP_pick']} | {cfg['LP_odd']} | **{cfg['LP_outcome']}**\n\n"
-        f"**Pick OTD:** \n\n"
-        f"| {cfg['POTD_league']} | {cfg['POTD_sport']} | {cfg['POTD_hour']} | \n\n"
-        f"{cfg['POTD_game']} | **{cfg['POTD_pick']}** | **{cfg['POTD_odd']}** | (always) **1 Unit**\n\n"
-        f"**Reasons:** \n\n"
-        f"{cfg['POTD_reasons']} \n\n"
-
-        "BOL"
-    )
+    message = f"**Record POTD: {request.form['record_POTD']}**  \n\n" \
+        f"**Net units: {request.form['net_units']}**  \n\n" \
+        f"**ROI: {request.form['ROI']} %**\n\n" \
+        f"**Last Pick:** \n\n" \
+        f"{request.form['LP_game']} | {request.form['LP_pick']} | {request.form['LP_odd']} | **{request.form['LP_outcome']}**\n\n" \
+        f"**Pick OTD:** \n\n" \
+        f"| {request.form['POTD_league']} | {request.form['POTD_sport']} | {request.form['hour_from_post']} | \n\n" \
+        f"{request.form['POTD_game']} | **{request.form['POTD_pick']}** | **{request.form['POTD_odd']}** | (always) **1 Unit**\n\n" \
+        f"**Reasons:** \n\n" \
+        f"{request.form['Reasoning']} \n\n" \
+        f"BOL"
     post = [str(date_time_obj), message, 0]
     worksheet.append_row(post)
     return redirect('/')
